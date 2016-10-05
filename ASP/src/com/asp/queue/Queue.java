@@ -4,10 +4,15 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 
-class Queue {
+class Queue implements Cloneable {
 	
-	private int top_priority = -1;
 	private LinkedList<Node> element;
+	public LinkedList<Node> getElement() {
+		return element;
+	}
+	public void setElement(LinkedList<Node> element) {
+		this.element = element;
+	}
 	Queue()
 	{
 		element = new LinkedList<Node>();
@@ -19,82 +24,84 @@ class Queue {
 	}
 	public String dequeue()
 	{
-		System.out.println("before dequeue"+element);
 		if(element.isEmpty())
 		{
-			System.out.println("Queue is empty");
+			System.out.println("\nQueue is empty");
 			return null;
 		}
 		Iterator<Node> itr = element.iterator();
-		int max = itr.next().getPriority();
-		
+
+		int max = element.getFirst().getPriority();
 		int j = 0;
 		int index = 0;
+	
 		while(itr.hasNext())
 		{
-			Node tnode = itr.next();
+			 Node tnode = itr.next();
 			 j = tnode.getPriority();
-			 index=element.indexOf(tnode);
-			 //System.out.println("index = "+index);
 			if (j > max)
 			{
 				max = j;
 				index = element.indexOf(tnode);
-				//element.get(max);
 			}
-			//System.out.println("index = "+index);
-			
-			System.out.println(tnode.getPriority()+tnode.getName());
-			
-			//element.remove(tnode);
 		}
-		System.out.println("index = "+index);
-		System.out.println("j="+max);
+		String temp = element.get(index).getName();
 		element.remove(index);
-		
-		System.out.println("queue"+element);
-		int max_priority = 0;
-		//int j =0 ;
-		for(int i = 0 ; i < top_priority;i++)
-		{
-			
-			/*if(priority[i] > max_priority)
-			{
-				max_priority = priority[i];
-				j = i;
-			}*/
-		}
-		System.out.println(max_priority);
-		return "abc";
-		//return name[j];
+		return temp;
 	}
 	public void empty()
 	{
 		if(element.isEmpty())
 		{
-			System.out.println("Queue is already empty");
+			System.out.println("\nQueue is already empty");
+		}
+		else{
+		System.out.println("\nEmpty Function called");
+		element.removeAll(element);
+		}
+		
+	}
+	public boolean equals(Object temp)
+	{
+		if (!(temp instanceof Queue))
+		{
+			return false;
+		}
+		if (temp == this && ((Queue)temp).element == element)
+		{
+			return true;
+		}
+		return false;
+	}
+	public Object clone() throws CloneNotSupportedException 
+	{
+		Queue temp = new Queue();
+		temp.setElement(this.element);
+		return temp;
+	}
+	@Override public String toString()
+	{
+		if(element.isEmpty())
+		{
+			System.out.println("\nQueue is empty");
+			return null;
 		}
 		Iterator<Node> itr = element.iterator();
-		element.removeAll(element);
-		System.out.println("queue is"+element);
-	}
-	public void equals()
-	{
-		
-	}
-	public Object clone()
-	{
-		return null;
-		//return name;
+		System.out.println("\nCurrent Elements in Queue are:");
+		while(itr.hasNext())
+		{
+			 Node tnode = itr.next();
+			 System.out.println("String = "+tnode.getName()+"  Priority = "+tnode.getPriority());
+			
 		}
-	public String toString()
-	{
-		
 		return null;
-		}
-	/*public int hashCode()
+	}
+	public int hashCode()
 	{
-		return 0;
-	}*/
+		int hashcode = 120;
+		hashcode = 31 * hashcode + (element == null ? 0 : element.hashCode());
+		
+		return hashcode;
+	}
 }
 //is there anything missing?
