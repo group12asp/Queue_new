@@ -6,15 +6,15 @@ public class QueueOp {
 		// TODO Auto-generated method stub
 		Queue queue = new Queue();
 		queue.toString();
-		queue.enqueue("def", 300);
+		queue.enqueue("gwu", 300);
 		queue.toString();
-		queue.enqueue("pqr",6);
+		queue.enqueue("gmu",6);
 		queue.toString();
-		queue.enqueue("xyz",17 );
+		queue.enqueue("uncc",17 );
 		queue.toString();
-		queue.enqueue("zhi", 150);
+		queue.enqueue("sjsu", 150);
 		queue.toString();
-		queue.enqueue("donald", 301);
+		queue.enqueue("csus", 301);
 		queue.toString();
 		System.out.println("\nString of deleted item is "+queue.dequeue());
 		queue.toString();
@@ -25,15 +25,15 @@ public class QueueOp {
 		queue.empty();
 		queue.toString();
 		Queue new_queue = (Queue)queue.clone();
-		System.out.println("After Clone queue!=new_queue is "+(queue!=new_queue));
+		System.out.println("\nAfter Clone queue!=new_queue is "+(queue!=new_queue));
 		new_queue.toString();
-		System.out.println("\nequal = "+queue.equals(new_queue));
-		System.out.println("\nequal = "+queue.equals(null));
+		System.out.println("\nqueue.equals(new_queue) = "+queue.equals(new_queue));
+		System.out.println("\nqueue.equals(null) = "+queue.equals(null));
 		Queue q2 = queue;
-		System.out.println("\nequal = "+queue.equals(q2));
-		System.out.println("hash="+queue.hashCode());
-		System.out.println("hash="+queue.hashCode());
-		System.out.println("hash of q2="+q2.hashCode());
+		System.out.println("\nqueue.equals(q2) = "+queue.equals(q2));
+		System.out.println("\nhash of queue="+queue.hashCode());
+		System.out.println("\nhash of queue="+queue.hashCode());
+		System.out.println("\nhash of q2="+q2.hashCode());
 	}
 
 }

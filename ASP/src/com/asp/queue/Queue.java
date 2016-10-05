@@ -19,11 +19,13 @@ class Queue implements Cloneable {
 	}
 	public void enqueue(String add,int priority1)
 	{
+		System.out.println("\n\nEnqueue function called");
 		Node latest = new Node(add, priority1);
 		element.add(latest);
 	}
 	public String dequeue()
 	{
+		System.out.println("\n\nDequeue function called");
 		if(element.isEmpty())
 		{
 			System.out.println("\nQueue is empty");
